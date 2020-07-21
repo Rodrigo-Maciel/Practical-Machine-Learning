@@ -1,0 +1,15 @@
+<html>
+Following the project instructions, here I will explain the analysis that I did to predict the "classe" variable.
+For the creation of the model I used the training dataset which contains 159 features. Before training a model, I analyzed the dataset and each of its features, once I did that I realized we need to clean the data before fitting an algorithm. The first step in the data preprocessing was dropping the features that had many missing data (drop any feature with 5+% of missing data), this leaves us 56 features
+The next step in the preprocessing was analyzing the data to see if there's any correlation between the features, here I found 7 different correlated groups between the features (19 features), using PCA I transformed this 7 groups into 8 components, retaining in each case at least 90% of the information contained in the original data (here we have 45 features left).
+After this I noticed that the data varies much from feature to feature, this is why I decided to standardize the dataset (subtracting the mean and dividing by the standard deviation), this will allow the model to be more precise.
+Here I decided it was time to train the model, so I split the dataset into 5 folds.
+I also realized that having 45 features would make the algorithm slow and maybe not generalizable, that is why I decided to make a feature selection. To make the feature selection I trained 5 different trees using the folds like cross validation, I extracted the most relevant features, and keep for the model the features that where relevant in all models (here we have 14 features left).
+At this point we have the dataset prepared for the algorithm, I decided to use decision tree because it's fast, easy to interpret and will make the model generalizable (for this I left at least 3% of the data in each final leaf node, this also reduces the risk of overfitting).
+I did a 5 - fold cross validation, the metric I used is accuracy because we have a balanced dataset (class variable is balanced), the mean of the accuracy is 0.81 and the standard deviation is 0.015, this gives us a very good idea of what to expect from the model (accuracy between 79 and 83).
+
+Conclusion:
+The classe variable depends greatly from this features raw_timestamp_part_1, num_window, gyros_belt_z, magnet_belt_y, magnet_belt_z, yaw_arm, roll_dumbbell, accel_dumbbell_y, magnet_dumbbell_x, magnet_dumbbell_y, magnet_dumbbell_z, roll_forearm, pitch_forearm.
+Creating a decision tree with this features (leaving at least 3% of the data in each final leaf node) allow us to a good model which is simple, fast, easy to interpret, accurate and generalizable. 
+I recognize the model could become more accurate, but in order to do so we would have to sacrifice the interpretation and simplicity of the model
+</html>
