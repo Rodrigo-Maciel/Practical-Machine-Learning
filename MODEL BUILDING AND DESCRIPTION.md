@@ -3,24 +3,30 @@ Course project
 
 # LOADING PACKAGES
 #library(dplyr)
+
 #library(caret)
+
 #library(rattle)
 
 
 
 # LOADING THE DATA
 #SET WORKING DIRECTORY
+
 #setwd("~/Coursera/Practical Machine Learning (ML en R)/Proyecto Final")
+
 #database = read.csv(file = "pml-training.csv")
 
 
 
 # PREPARING THE DATA
 #Counting missing data
+
 #sapply(database, function(x) sum(is.na(x)))
 
 #Drop variables with +5% of missing data, filling this variables would change the model's outcome
-#database = subset(database, select = -c(X, max_roll_belt, user_name, cvtd_timestamp, max_picth_belt, new_window, min_roll_belt, min_pitch_belt, amplitude_roll_belt, #amplitude_pitch_belt,
+
+#database = subset(database, select = -c(X, max_roll_belt, user_name, cvtd_timestamp, max_picth_belt, new_window, min_roll_belt, min_pitch_belt, amplitude_roll_belt, amplitude_pitch_belt,
                                         var_total_accel_belt, avg_roll_belt, stddev_roll_belt, var_roll_belt, avg_pitch_belt, stddev_pitch_belt,
                                         var_pitch_belt, avg_yaw_belt, stddev_yaw_belt, var_yaw_belt, var_accel_arm, avg_roll_arm, stddev_roll_arm,
                                         var_roll_arm, avg_pitch_arm, stddev_pitch_arm, var_pitch_arm, avg_yaw_arm, stddev_yaw_arm, var_yaw_arm,
@@ -43,9 +49,11 @@ Course project
 
 # APLY PCA TO REDUCE DIMENSIONALITY AND KEEP MOST PART OF THE INFORMATION OF THE VARIABLES (COMPONENTS MUST HAVE 90+% OF THE DATA)
 #database_correlation = subset(database, select = -c(classe))
+
 #correlation = cor(database_correlation)
 
 #VARIABLES WITH ABSOLUTE VALUE OF CORRELATION EQUAL OR BIGGER TO 0.8
+
 #roll_belt, yaw_belt, total_accel_belt, accel_belt_y, accel_belt_z
 #v1 = prcomp(database[c(4, 6, 7, 12, 13)]) 
 #summary(v1) #Component 1-90%
@@ -90,6 +98,7 @@ Course project
 #database[,64] = database[,34]*0.4633751 + database[,36]*-0.7105826 + database[,49]*-0.5294864
 
 #Drop variables that were transformed via PCA
+
 #database = subset(database, select = -c(roll_belt, yaw_belt, total_accel_belt, accel_belt_y, accel_belt_z, pitch_belt, accel_belt_x, magnet_belt_x,
                                         gyros_arm_x, gyros_arm_y, accel_arm_x, magnet_arm_x, magnet_arm_y, magnet_arm_z, yaw_dumbbell, accel_dumbbell_z,
                                         gyros_dumbbell_x, gyros_dumbbell_z, gyros_forearm_z))
@@ -98,9 +107,11 @@ Course project
 
 # 1ST MODEL: DECISION TREE (WE USE STANDARIZED DATA TO AVOID THE UNITS SIZE IMPACT)
 #DIVIDE DATASET INTO TRAIN AND TEST SETS
+
 #partition = createDataPartition(y=database[,1], p=0.75, list=FALSE)
 
 #train = database[partition,]
+
 #test = database[-partition,]
 
 
