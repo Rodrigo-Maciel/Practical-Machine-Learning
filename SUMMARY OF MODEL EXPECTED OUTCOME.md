@@ -1,0 +1,8 @@
+# Practical-Machine-Learning
+Course project
+
+# 1ST MODEL: DECISION TREE
+EXPECTED ACCURACY = 0.53
+
+# 2ND MODEL: RANDOM FOREST
+EXPECTED ACCURACY = 
